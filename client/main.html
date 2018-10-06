@@ -1,0 +1,25 @@
+<head>
+
+  <title>Matripuntos Vs. Novibonos</title>
+
+</head>
+
+<body>
+
+  <div id="render-target"></div>
+<br>
+<br>
+  <h1>Hola,</h1>
+  {{> login}}
+
+</body>
+
+<template name="login">
+  {{#if currentUser}}
+  <strong>{{currentUser.username}}</strong>
+
+  <br> <br> <button class="log-out">Log out</button>
+  {{else}}
+  
+  {{/if}}
+</template>
