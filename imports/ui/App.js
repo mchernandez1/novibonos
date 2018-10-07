@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Tasks } from '../api/tasks.js';
-import { Juntos } from '../api/tasks.js';
+import { Tasks } from '../api/collections.js';
+import { Juntos } from '../api/collections.js';
 import Task from './Task.js';
 import Junto from './Junto.js';
 import AccountsUIWrapper from './AccountsUIWrapper.js';
@@ -21,13 +21,7 @@ class App extends Component {
     const textTask = ReactDOM.findDOMNode(this.refs.textTaskInput).value.trim();
     const pointsTask = parseInt(ReactDOM.findDOMNode(this.refs.numTaskInput).value);
 
-    Tasks.insert({
-      textTask,
-      pointsTask,
-      createdAt: new Date(), // current time
-      owner: Meteor.userId(),           // _id of logged in user
-      username: Meteor.user().username,  // username of logged in user
-    });
+    Meteor.call('tasks.insert', [textTask, pointsTask]);
 
     // Clear form
     ReactDOM.findDOMNode(this.refs.textTaskInput).value = '';
@@ -41,13 +35,7 @@ class App extends Component {
     const textJuntos = ReactDOM.findDOMNode(this.refs.textJuntosInput).value.trim();
     const pointsJuntos = parseInt(ReactDOM.findDOMNode(this.refs.numJuntosInput).value);
 
-    Juntos.insert({
-      textJuntos,
-      pointsJuntos,
-      createdAt: new Date(), // current time
-      owner: Meteor.userId(),           // _id of logged in user
-      username: Meteor.user().username,  // username of logged in user
-    });
+    Meteor.call('juntos.insert', [textJuntos, pointsJuntos]);
 
     // Clear form
     ReactDOM.findDOMNode(this.refs.textJuntosInput).value = '';
@@ -56,14 +44,13 @@ class App extends Component {
 
 
   renderTasks() {
-    console.log("Esto es tasks: " + this.props.tasks);
+
     return this.props.tasks.map((task) => (
       <Task key={task._id} task={task} />
     ));
   }
 
   renderJuntos() {
-    console.log("Esto es juntos: " + this.props.juntos);
 
     return this.props.juntos.map((junto) => (
       <Junto key={junto._id} junto={junto} />
@@ -138,6 +125,9 @@ class App extends Component {
 }
 
 export default withTracker(() => {
+  Meteor.subscribe('tasks');
+  Meteor.subscribe('juntos');
+  
   return {
     tasks: Tasks.find({}, { sort: { createdAt: -1 } }).fetch(),
     juntos: Juntos.find({}, { sort: {createdAt: -1 } }).fetch(),

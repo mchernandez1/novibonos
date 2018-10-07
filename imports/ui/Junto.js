@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import { Juntos } from '../api/tasks.js';
+import { Meteor } from 'meteor/meteor';
+import { Juntos } from '../api/collections.js';
 
 export default class Junto extends Component {
 
   toggleChecked() {
 
     // Set the checked property to the opposite of its current value
-    Juntos.update(this.props.junto._id, {
-      $set: { checked: !this.props.junto.checked },
-    });
+    Meteor.call('juntos.setChecked', this.props.junto._id, !this.props.junto.checked);
   }
 
   deleteThisJunto() {
-    Juntos.remove(this.props.junto._id);
+    Meteor.call('juntos.remove', this.props.junto._id);
   }
 
   render() {
