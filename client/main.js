@@ -40,23 +40,23 @@ function createHigh() {
       type: 'bar'
     },
     title: {
-      text: 'Fruit Consumption'
+      text: 'Puntos de pareja mensual'
     },
     xAxis: {
-      categories: ['Apples', 'Bananas', 'Oranges']
+      categories: ['Octubre', 'Noviembre', 'Diciembre']
     },
     yAxis: {
       title: {
-        text: 'Fruit eaten'
+        text: 'Punto de cada uno'
       },
     },
     series: [
       {
-        name: 'Jane',
-        data: [1, 0, 4]
+        name: 'Laura',
+        data: [10, 0, 0]
       }, {
-        name: 'John',
-        data: [5, 7, 3]
+        name: 'Juan',
+        data: [25, 0, 0]
       }
     ]
   });
