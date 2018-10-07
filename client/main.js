@@ -5,7 +5,7 @@ import { render } from 'react-dom';
 import './main.html';
 import '../imports/startup/accounts-config.js';
 import App from '../imports/ui/App.js';
-
+import Highcharts from 'highcharts';
 
 
 Meteor.startup(() => {
@@ -31,4 +31,42 @@ Template.login.events({
     event.preventDefault();
     Meteor.logout();
   }
+});
+
+
+function createHigh() {
+  $('#container').highcharts({
+    chart: {
+      type: 'bar'
+    },
+    title: {
+      text: 'Fruit Consumption'
+    },
+    xAxis: {
+      categories: ['Apples', 'Bananas', 'Oranges']
+    },
+    yAxis: {
+      title: {
+        text: 'Fruit eaten'
+      },
+    },
+    series: [
+      {
+        name: 'Jane',
+        data: [1, 0, 4]
+      }, {
+        name: 'John',
+        data: [5, 7, 3]
+      }
+    ]
+  });
+}
+
+Template.Test.onCreated(function() {
+});
+
+Template.Test.onRendered(function() {
+  this.autorun(() => {
+    createHigh();
+  });
 });
