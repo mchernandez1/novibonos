@@ -52,11 +52,11 @@ function createHigh() {
     },
     series: [
       {
-        name: 'Laura',
-        data: [10, 0, 0]
+        name: 'Camila',
+        data: [20, 0, 0]
       }, {
-        name: 'Juan',
-        data: [25, 0, 0]
+        name: 'Andres',
+        data: [15, 0, 0]
       }
     ]
   });
