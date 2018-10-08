@@ -25,12 +25,12 @@ export default class Junto extends Component {
           &times;
         </button>
 
-        <input
+        {/* <input
           type="checkbox"
           readOnly
           checked={!!this.props.junto.checked}
           onClick={this.toggleChecked.bind(this)}
-        />
+        /> */}
 
         <span className="text">
           <strong>{this.props.junto.username}</strong>: {this.props.junto.textJuntos} / {this.props.junto.pointsJuntos}
