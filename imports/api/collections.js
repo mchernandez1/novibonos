@@ -2,12 +2,24 @@ import { Mongo } from 'meteor/mongo';
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 
+// Las colecciones deberían estar modularizadas para que la aplicación sea más escalable en el tiempo.
+
+// Depronto tengan en cuenta en que idioma van a nombrar las colecciones  
+// porque tienen una base de datos con nombres de colecciones en ambos idiomas.
+
+// Debería existir un archivo para "tasks"
 export const Tasks = new Mongo.Collection('tasks');
+
+// Debería existir un archivo para "juntos"
 export const Juntos = new Mongo.Collection('juntos');
 
 if (Meteor.isServer) {
   // This code only runs on the server
-  Meteor.publish('tasks', function tasksPublication() {
+
+  // ¿Las tareas no deberían ser solamente vistas por los usuarios que las crearon?
+  // Usen el "Meteor.userId()" en el metodo de find para ambas publicaciones como valor del atributo "owner"
+  
+  Meteor.publish('tasks', function tasksPublication() { 
     return Tasks.find();
   });
 
