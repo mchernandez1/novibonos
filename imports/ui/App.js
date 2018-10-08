@@ -21,6 +21,13 @@ class App extends Component {
     const textTask = ReactDOM.findDOMNode(this.refs.textTaskInput).value.trim();
     const pointsTask = parseInt(ReactDOM.findDOMNode(this.refs.numTaskInput).value);
 
+    // En lugar de eviar los datos como arreglo. Mandelos como un objeto, así se aseguran de tomar bien los parametros:
+    // {
+    //  text: textTask,
+    //  points: pointsTask
+    // }
+    // Reemplacen eso por esto "[textTask, pointsTask]"
+    
     Meteor.call('tasks.insert', [textTask, pointsTask]);
 
     // Clear form
@@ -35,6 +42,12 @@ class App extends Component {
     const textJuntos = ReactDOM.findDOMNode(this.refs.textJuntosInput).value.trim();
     const pointsJuntos = parseInt(ReactDOM.findDOMNode(this.refs.numJuntosInput).value);
 
+    // En lugar de eviar los datos como arreglo. Mandenlos como un objeto, así se aseguran de tomar bien los parametros:
+    // {
+    //  text: textJuntos,
+    //  points: pointsJuntos
+    // }
+    // Reemplacen eso por esto "[textJuntos, pointsJuntos]"
     Meteor.call('juntos.insert', [textJuntos, pointsJuntos]);
 
     // Clear form
