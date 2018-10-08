@@ -19,6 +19,9 @@ if (Meteor.isServer) {
 Meteor.methods({
 
   /////////////////////////// Metodos para labores ////////////////////////////
+  
+  // Reemplacen el arreglo por parametros usando {text, points} en vez de "data" y tomen los valores directamente
+  
   'tasks.insert'(data) {
 
     let textTask = data[0];
@@ -52,6 +55,7 @@ Meteor.methods({
   },
 
   ///////////////////////////Metodos para juntos//////////////////////////////
+  // Reemplacen el arreglo por parametros usando {text, points} en vez de "data" y tomen los valores directamente
   'juntos.insert'(data) {
 
     let textJuntos = data[0];
