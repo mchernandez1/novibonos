@@ -2,6 +2,8 @@ import { Mongo } from 'meteor/mongo';
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 
+
+// es buena práctica separar las colecciones, cada una en su propio archivo .js, es decir, tasks.js en uno con sus permisos y métodos, y juntos.js en otro
 export const Tasks = new Mongo.Collection('tasks');
 export const Juntos = new Mongo.Collection('juntos');
 
