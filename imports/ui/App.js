@@ -2,11 +2,17 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
+// Mismo consejo del api, esta no es buena práctica, sobre todo cuando se tienen muchas más collecciones
+// Deberían tener tasks.js y juntos.js
 import { Tasks } from '../api/collections.js';
 import { Juntos } from '../api/collections.js';
 import Task from './Task.js';
 import Junto from './Junto.js';
 import AccountsUIWrapper from './AccountsUIWrapper.js';
+
+
+// A manera de consejo: No está mal poner la página principal de la app en este App.js, pero es mejor si modularizan 
+// y crean un componente para esto. Esto ayuda sobre todo en términos de modificabilidad
 
 // App component - represents the whole app
 class App extends Component {
